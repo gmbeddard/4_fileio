@@ -28,8 +28,7 @@ void writeFile() {
 
 void readFile(){
 	ifstream myInputfile;
-	myInputfile.open(MYFILE.c_str());
-	myInputfile.open(MYFILE.c_str(), ios::trunc);	//could open with  flags myfile.open(MYFILE, ios::in)
+	myInputfile.open(MYFILE.c_str());	//could open with  flags myfile.open(MYFILE, ios::in)
 												//note the .c_str() call on MYFILE
 	//read and count the data
 	std::string line;
