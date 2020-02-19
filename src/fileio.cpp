@@ -12,24 +12,33 @@ using namespace std;
 
 //global to this file
  const std::string MYFILE = "TestFile.txt";
+ const int 	SUCCESS				= 0;
+ const int 	COULD_NOT_OPEN_FILE = -1;
 
-void writeFile() {
+int writeFile() {
 	ofstream myOutputfile;
 	myOutputfile.open(MYFILE.c_str());	//could open with  flags myfile.open(MYFILE, ios::out)
 										//note the .c_str() call on MYFILE
-	myOutputfile << "Writing this to a file.\n";
+	if (!myOutputfile.is_open())
+			return COULD_NOT_OPEN_FILE;
+
+	myOutputfile << "Data for a file.\n";
 
 	//delicate, what if exception is thrown after file is opened
 	//but before next line?
 	//never close the file, resource leak, and some systems
 	//limit number file handles open,
 	myOutputfile.close();
+	return SUCCESS;
 }
 
-void readFile(){
+int readFile(){
 	ifstream myInputfile;
 	myInputfile.open(MYFILE.c_str());	//could open with  flags myfile.open(MYFILE, ios::in)
 												//note the .c_str() call on MYFILE
+	if (!myInputfile.is_open())
+			return COULD_NOT_OPEN_FILE;
+
 	//read and count the data
 	std::string line;
 	while (!myInputfile.eof()) {				//exits when reach end of file
@@ -42,11 +51,15 @@ void readFile(){
 	//never close the file, resource leak, and some systems
 	//limit number file handles open,
 	myInputfile.close();
+	return SUCCESS;
 }
 
 
 int main() {
+	cout << "Writing to a file"<<endl;
 	writeFile();
+
+	cout << "Reading following string from a file"<<endl;
 	readFile();
 }
 
