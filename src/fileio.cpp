@@ -57,10 +57,16 @@ int readFile(){
 
 int main() {
 	cout << "Writing to a file"<<endl;
-	writeFile();
+	int res = writeFile();
+	if(res == COULD_NOT_OPEN_FILE)
+		cout << "Writing to a file"<<endl;
+
 
 	cout << "Reading following string from a file"<<endl;
-	readFile();
+	res = readFile();
+	if(res == COULD_NOT_OPEN_FILE)
+		cout << "Writing to a file"<<endl;
+
 }
 
 
