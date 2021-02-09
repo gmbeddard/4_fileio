@@ -1,6 +1,6 @@
 //============================================================================
 // Name        : 3_File_IO.cpp
-// Author      :
+// Author      : gmbeddard
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
@@ -11,7 +11,7 @@
 using namespace std;
 
 //global to this file
- const std::string MYFILE = "TestFile.txt";
+ const std::string MYFILE = "TestFile.txt"; //constant MYFILE should always be capitalized
  const int 	SUCCESS				= 0;
  const int 	COULD_NOT_OPEN_FILE = -1;
 
